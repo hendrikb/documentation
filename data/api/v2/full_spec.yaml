@@ -645,6 +645,8 @@ components:
       properties:
         created_by:
           $ref: '#/components/schemas/RelationshipToUser'
+        leak_information:
+          $ref: '#/components/schemas/RelationshipToLeakInformation'
         modified_by:
           $ref: '#/components/schemas/RelationshipToUser'
       type: object
@@ -710,6 +712,26 @@ components:
           items:
             $ref: '#/components/schemas/APIKeyResponseIncludedItem'
           type: array
+        meta:
+          $ref: '#/components/schemas/APIKeysResponseMeta'
+      type: object
+    APIKeysResponseMeta:
+      description: Additional information related to api keys response.
+      properties:
+        max_allowed:
+          description: Max allowed number of API keys.
+          format: int64
+          type: integer
+        page:
+          $ref: '#/components/schemas/APIKeysResponseMetaPage'
+      type: object
+    APIKeysResponseMetaPage:
+      description: Additional information related to the API keys response.
+      properties:
+        total_filtered_count:
+          description: Total filtered application key count.
+          format: int64
+          type: integer
       type: object
     APIKeysSort:
       default: name
@@ -794,6 +816,8 @@ components:
     ApplicationKeyRelationships:
       description: Resources related to the application key.
       properties:
+        leak_information:
+          $ref: '#/components/schemas/RelationshipToLeakInformation'
         owned_by:
           $ref: '#/components/schemas/RelationshipToUser'
       type: object
@@ -813,6 +837,24 @@ components:
       oneOf:
       - $ref: '#/components/schemas/User'
       - $ref: '#/components/schemas/Role'
+    ApplicationKeyResponseMeta:
+      description: Additional information related to the application key response.
+      properties:
+        max_allowed_per_user:
+          description: Max allowed number of application keys per user.
+          format: int64
+          type: integer
+        page:
+          $ref: '#/components/schemas/ApplicationKeyResponseMetaPage'
+      type: object
+    ApplicationKeyResponseMetaPage:
+      description: Additional information related to the application key response.
+      properties:
+        total_filtered_count:
+          description: Total filtered application key count.
+          format: int64
+          type: integer
+      type: object
     ApplicationKeyUpdateAttributes:
       description: Attributes used to update an application Key.
       properties:
@@ -8286,6 +8328,8 @@ components:
           items:
             $ref: '#/components/schemas/ApplicationKeyResponseIncludedItem'
           type: array
+        meta:
+          $ref: '#/components/schemas/ApplicationKeyResponseMeta'
       type: object
     ListDowntimesResponse:
       description: Response for retrieving all downtimes.
@@ -12651,6 +12695,27 @@ components:
       required:
       - id
       - type
+      type: object
+    RelationshipToLeakInformation:
+      description: Relationship to user.
+      properties:
+        data:
+          $ref: '#/components/schemas/RelationshipToLeakInformationData'
+      required:
+      - data
+      type: object
+    RelationshipToLeakInformationData:
+      description: Relationship to user object.
+      nullable: true
+      properties:
+        id:
+          description: A unique identifier that represents the user.
+          example: 00000000-0000-0000-2345-000000000000
+          type: string
+        type:
+          $ref: '#/components/schemas/UsersType'
+      required:
+      - id
       type: object
     RelationshipToOrganization:
       description: Relationship to an organization.
