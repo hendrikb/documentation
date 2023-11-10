@@ -1,0 +1,12 @@
+{
+  "data": {
+    "attributes": {
+      "enabled": false,
+      "targets": [
+        "test2"
+      ]
+    },
+    "id": "{notification_profile.data.id}",
+    "type": "notification_profiles"
+  }
+}

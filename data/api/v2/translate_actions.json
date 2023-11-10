@@ -980,9 +980,33 @@
     "request_description": "New definition of the Agent rule.",
     "request_schema_description": "Request object that includes the Agent rule with the attributes to update."
   },
+  "ListSecurityMonitoringNotificationRules": {
+    "description": "List all notification profiles.",
+    "summary": "List notification profiles"
+  },
+  "CreateSecurityMonitoringNotificationRule": {
+    "description": "Create a notification profile.",
+    "summary": "Create a notification profile",
+    "request_description": "",
+    "request_schema_description": "Request body for creating a security monitoring notification profile."
+  },
+  "DeleteSecurityMonitoringNotificationRule": {
+    "description": "Delete a specific notification profile.",
+    "summary": "Delete a notification profile"
+  },
+  "GetSecurityMonitoringNotificationRule": {
+    "description": "Get notification profile by id.",
+    "summary": "Get notification profile by id"
+  },
+  "EditSecurityMonitoringNotificationRule": {
+    "description": "Update a specific notification profile.",
+    "summary": "Update a notification profile",
+    "request_description": "Attributes describing the signal update.",
+    "request_schema_description": "Request body for updating a security monitoring notification profile."
+  },
   "ListSecurityFilters": {
-    "description": "Get the list of configured security filters with their definitions.",
-    "summary": "Get all security filters"
+    "description": "List all configured security filters with their definitions.",
+    "summary": "List security filters"
   },
   "CreateSecurityFilter": {
     "description": "Create a security filter.\n\nSee the [security filter guide](https://docs.datadoghq.com/security_platform/guide/how-to-setup-security-filters-using-security-monitoring-api/)\nfor more examples.",
@@ -1005,7 +1029,7 @@
     "request_schema_description": "The new security filter body."
   },
   "ListSecurityMonitoringRules": {
-    "description": "List rules.",
+    "description": "List all rules.",
     "summary": "List rules"
   },
   "CreateSecurityMonitoringRule": {
